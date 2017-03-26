@@ -153,7 +153,8 @@
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:background="@android:drawable/divider_horizontal_bright"
-            android:layout_marginBottom="@dimen/small_vert_padding" />
+            android:layout_marginBottom="@dimen/small_vert_padding"
+            android:id="@+id/divider1" />
 
         <TextView
             android:text="Fuel"
@@ -285,27 +286,58 @@
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:background="@android:drawable/divider_horizontal_bright"
-            android:layout_marginBottom="@dimen/small_vert_padding" />
+            android:layout_marginBottom="@dimen/small_vert_padding"
+            android:id="@+id/divider2" />
 
         <TextView
             android:text="Climb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:id="@+id/txtClimb"
             android:textSize="20sp"
             android:textColor="?android:attr/textColorSecondary" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnClimbStart"
+                android:layout_weight="1"
+                android:text="Start"
+                android:backgroundTint="@color/btnGreen"
+                android:onClick="onStartClimb" />
+
+            <Button
+                android:text="Finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnClimbFinish"
+                android:layout_weight="1"
+                android:onClick="onFinishClimb" />
+
+            <Button
+                android:text="Failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnClimbFailed"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btnRed"
+                android:onClick="onFailedClimb" />
+
+        </LinearLayout>
 
         <Button
             android:text="End Game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnEndGame"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="25dp"
             android:backgroundTint="#EDDBFF"
             android:onClick="onEndGame" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
     </LinearLayout>
 </RelativeLayout>

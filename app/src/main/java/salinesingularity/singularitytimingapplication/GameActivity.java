@@ -302,4 +302,20 @@ public class GameActivity extends AppCompatActivity {
 
         //Climb
     }
+
+    public void onStartClimb (View v)
+    {
+
+    }
+
+    public void onFinishClimb (View v)
+    {
+
+    }
+
+    public void onFailedClimb (View v)
+    {
+
+    }
+
 }
