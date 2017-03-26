@@ -225,6 +225,15 @@ public class GameActivity extends AppCompatActivity {
 
     public void onEndGame (View v)
     {
+
+        ArrayList<TeleopEvent> fuelList = new ArrayList<>();
+
+        //Add the fuel counter data to the string representing the match
+        events.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
+        events.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
+        events.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
+        events.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
+
         //Generate a string representing the match
         long endTime = System.currentTimeMillis();
         String result = "";
@@ -278,10 +287,19 @@ public class GameActivity extends AppCompatActivity {
 
     private enum TeleopEventType {
 
+        //Gears
         PICKUP_S,
         PICKUP_F,
         GEAR_SCORE_S,
         GEAR_SCORE_F,
-        GEAR_DROP
+        GEAR_DROP,
+
+        //Fuel
+        LOW_GOAL_S,
+        LOW_GOAL_F,
+        HIGH_GOAL_S,
+        HIGH_GOAL_F
+
+        //Climb
     }
 }
