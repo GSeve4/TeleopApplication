@@ -9,4 +9,13 @@
     <string name="dropped">Dropped</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
+    <string name="Instructions">\tWhen you press the start match button you will be presented with the
+        screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear
+        that the robot receives, either from the gear slot or off the ground, press the green button
+        in the \"Pickup\" row. For every gear failed to be collected, press the red button in the \"Pickup\"
+        row.\n\n\tFor every gear scored, press the green button in the \"Scored\" row. For every gear that
+        is dropped off of the peg, press the red button in the \"Scored\" row.\n\n\tIf a gear is dropped at
+        another time, press the grey \"Gear Dropped\" button.\n\n\tWhen the match end whistle sounds, press
+        the end match button, this is time sensitive. It will then copy data to your clipboard, you must
+        paste this into the \"Data from teleop app\" text box under the \"Midgame\" tab in Memento.</string>
 </resources>
