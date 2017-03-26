@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.1_fd111d93042f7200dbe3c4be12070b550a77ba61\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_f78efb19f1b0cc0f457fe57e6a6b1de0b652c3fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.1_49d279bd88b4d91091879364cdb3398c0fcb0b4a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.1_f4988cfff8f8adc0515d897e593e002ec1ef285b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.1_f06553baf580556b35d36f1421ffde157c03550d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.1_7f1ceee6e0f3096f875a829a9c6f3a4e7813c236\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.1_0e4c8eccd1ffea8953e2d767092713ef4f56c647\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.1_b1425d96f92dacdbbd0d1e172e495574ee76c6ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a8eae1e403250ad95816bfa3632bf43ee39ef2ce">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_bc60b4d94243ca289654530eea4f3bc8c5f6bddd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6c72ad1b653208a3926d1f4ec559bcf1643f1de5">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_41864b0bd9d54e403c909d1636f8b57f9fb9f066\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.1_95eac28889767963fc59b5e2308011a1dcfb96a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="C:\Users\Gavin Severance\AndroidStudioProjects\SingularityTimingApplication\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.1_56af8a8b2d5d87c94b46ff2a25b1a3004e8bc62f\classes.dex" />
+    </item>
+
+</items>
