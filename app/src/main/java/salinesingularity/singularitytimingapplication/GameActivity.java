@@ -226,13 +226,6 @@ public class GameActivity extends AppCompatActivity {
     public void onEndGame (View v)
     {
 
-        ArrayList<TeleopEvent> fuelList = new ArrayList<>();
-
-        //Add the fuel counter data to the string representing the match
-        events.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
-        events.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
-        events.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
-        events.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
 
         //Generate a string representing the match
         long endTime = System.currentTimeMillis();
@@ -240,6 +233,19 @@ public class GameActivity extends AppCompatActivity {
         for(TeleopEvent t : events) {
             //Log.d("event", t.toStringGameTime(endTime));
             result += t.toStringGameTime(endTime) + "; ";
+        }
+
+        //Add the fuel data to that string
+        ArrayList<TeleopEvent> fuelData = new ArrayList<>();
+
+        fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
+        fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
+        fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
+        fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
+
+        for(TeleopEvent t : fuelData) {
+            //Log.d("event", t.toStringGameTime(endTime));
+            result += t.toString() + "; ";
         }
 
         Log.d("result", result);
