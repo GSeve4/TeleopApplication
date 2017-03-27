@@ -20,6 +20,8 @@ import static salinesingularity.singularitytimingapplication.R.id.btnDropped;
 public class GameActivity extends AppCompatActivity {
 
     int scores_s, scores_f, pickups_s, pickups_f, gearsDropped;
+    int low_s, low_f, high_s, high_f;
+
     ArrayList<TeleopEvent> events;
     ArrayList<TeleopEvent> undone;
 
@@ -33,7 +35,8 @@ public class GameActivity extends AppCompatActivity {
         undone = new ArrayList<>();
 
 
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_game);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -41,6 +44,8 @@ public class GameActivity extends AppCompatActivity {
         //updateCounters();
 
     }
+
+    //gear button methods
 
     public void onPickupS (View v)
     {
@@ -100,6 +105,50 @@ public class GameActivity extends AppCompatActivity {
         updateCounters();
     }
 
+    //Fuel Button methods
+
+    public void onLowGoalS(View v){
+        low_s++;
+        updateCounters();
+    }
+
+    public void onLowGoalF(View v){
+        low_f++;
+        updateCounters();
+    }
+
+    public void onHighGoalS(View v){
+        high_s++;
+        updateCounters();
+    }
+
+    public void onHighGoalF(View v){
+        high_f++;
+        updateCounters();
+    }
+
+    public void onLowGoalSDec(View v){
+        if(low_s > 0) low_s--;
+        updateCounters();
+    }
+
+    public void onLowGoalFDec(View v){
+        if(low_f > 0) low_f--;
+        updateCounters();
+    }
+
+    public void onHighGoalSDec(View v){
+        if(high_s > 0) high_s--;
+        updateCounters();
+    }
+
+    public void onHighGoalFDec(View v){
+        if(high_f > 0) high_f--;
+        updateCounters();
+    }
+
+    //Data methods
+
     public void updateCounters() {
 
         //Get the count of each type of event
@@ -126,6 +175,8 @@ public class GameActivity extends AppCompatActivity {
 
         //Set the buttons' text fields to their respective counts
 
+        //Gears
+
         Button btnPickupS = (Button) findViewById(R.id.btnPickupS);
         btnPickupS.setText(pickups_s + "");
 
@@ -140,6 +191,20 @@ public class GameActivity extends AppCompatActivity {
 
         TextView tvDropped = (TextView) findViewById(R.id.tvDropCount);
         tvDropped.setText(gearsDropped + "");
+
+        //Fuel
+
+        Button btnLowGoalS = (Button) findViewById(R.id.btnLowGoalS);
+        btnLowGoalS.setText(low_s + "");
+
+        Button btnLowGoalF = (Button) findViewById(R.id.btnLowGoalF);
+        btnLowGoalF.setText(low_f + "");
+
+        Button btnHighGoalS = (Button) findViewById(R.id.btnHighGoalS);
+        btnHighGoalS.setText(high_s + "");
+
+        Button btnHighGoalF = (Button) findViewById(R.id.btnHighGoalF);
+        btnHighGoalF.setText(high_f + "");
 
         //Log.d("Update!", "updated values");
         Log.d("Updated array: ", events.toString());
