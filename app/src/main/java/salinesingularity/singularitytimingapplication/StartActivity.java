@@ -28,6 +28,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         instructionButton = (Button) findViewById(R.id.btnInst);
         instructionButton.setOnClickListener(new View.OnClickListener()
         {

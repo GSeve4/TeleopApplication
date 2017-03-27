@@ -14,14 +14,19 @@ public class InstructionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction);
-        backButton = (Button) findViewById(R.id.btnInst);
+        backButton = (Button) findViewById(R.id.btnReturn);
         backButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+
+                finish();
+
+                /* This starts a new start activity... we just want to go back ti the previous one
                 Intent intent = new Intent(InstructionActivity.this,StartActivity.class);
                 startActivity(intent);
+                */
             }
         });
     }
