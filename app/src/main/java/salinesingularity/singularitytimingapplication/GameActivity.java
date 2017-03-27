@@ -1,8 +1,12 @@
 package salinesingularity.singularitytimingapplication;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +27,8 @@ public class GameActivity extends AppCompatActivity {
     int low_s, low_f, high_s, high_f;
     boolean climbing = false;
     boolean climb_finished = false;
+    boolean end_match_pressed = false;
+    long endTime = 0;
 
     ArrayList<TeleopEvent> events;
     ArrayList<TeleopEvent> undone;
@@ -207,6 +213,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void updateCounters() {
 
+        //set end match button back to normal when any other button is pressed
+        end_match_pressed = false;
+
+        Button btnEndGame = (Button) findViewById(R.id.btnEndGame);
+        btnEndGame.setText(getString(R.string.default_end_game));
+
+
         //Get the count of each type of event
         setCountsToZero();
         for(TeleopEvent e : events) {
@@ -291,8 +304,14 @@ public class GameActivity extends AppCompatActivity {
     {
 
 
+        if(!end_match_pressed) { //if the end match button hasn't been pressed yet
+            end_match_pressed = true;
+            Button btnEndGame = (Button) findViewById(R.id.btnEndGame);
+            btnEndGame.setText(getString(R.string.dialogEndGame));
+            endTime = System.currentTimeMillis();
+        } else { //if the end match button has been pressed once
+
         //Generate a string representing the match
-        long endTime = System.currentTimeMillis();
         String result = "";
         for(TeleopEvent t : events) {
             //Log.d("event", t.toStringGameTime(endTime));
@@ -322,9 +341,12 @@ public class GameActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), "Match data copied to clipboard", Toast.LENGTH_SHORT);
         toast.show();
 
+        }
 
 
     }
+
+    //===========================================  PRIVATE CLASSES ==============================================
 
     private class TeleopEvent
     {
@@ -354,7 +376,28 @@ public class GameActivity extends AppCompatActivity {
         }
 
     }
-
+/*
+    private class EndMatchDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.dialog_end_match)
+                    .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+    }
+*/
     private enum TeleopEventType {
 
         //Gears

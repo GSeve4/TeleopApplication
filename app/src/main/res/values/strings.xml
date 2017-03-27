@@ -14,6 +14,7 @@
     <string name="finish_climb">Finish</string>
     <string name="fail_climb">Fail</string>
     <string name="climb_complete">Undo</string>
+    <string name="default_end_game">End Game</string>
 
     <string name="Instructions">\tWhen you press the start match button you will be presented with the
         screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear
@@ -26,4 +27,5 @@
         will decrement.\n\n\tWhen the match end whistle sounds, press the end match button, this is time
         sensitive. It will then copy data to your clipboard, you must paste this into the
         \"Data from teleop app\" text box under the \"Midgame\" tab in Memento.</string>
+    <string name="dialogEndGame">Tap one more time to end game</string>
 </resources>
