@@ -11,12 +11,12 @@
     tools:context="salinesingularity.singularitytimingapplication.StartActivity">
 
     <Button
-        android:text="START"
         android:layout_width="350dp"
         android:layout_height="100dp"
         android:id="@+id/btnStart"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/start_match" />
 
     <Button
         android:text="Instructions"
@@ -26,5 +26,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/tvTitle"
+        android:textSize="20sp" />
 
 </RelativeLayout>

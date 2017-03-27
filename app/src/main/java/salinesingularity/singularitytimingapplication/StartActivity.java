@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.TextView;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -18,6 +18,10 @@ public class StartActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvTitle.setText(getString(R.string.app_name) + " v" + getString(R.string.app_version));
+
         startButton = (Button) findViewById(R.id.btnStart);
         startButton.setOnClickListener(new View.OnClickListener()
         {

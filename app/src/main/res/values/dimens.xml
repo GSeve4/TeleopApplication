@@ -7,4 +7,5 @@
     <dimen name="row_title_width">40dp</dimen>
     <dimen name="small_vert_padding">10dp</dimen>
     <dimen name="lowHighGoalTvWidth">65dp</dimen>
+    <dimen name="review_text_width">200dp</dimen>
 </resources>

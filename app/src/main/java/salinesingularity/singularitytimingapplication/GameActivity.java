@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -311,42 +312,57 @@ public class GameActivity extends AppCompatActivity {
             endTime = System.currentTimeMillis();
         } else { //if the end match button has been pressed once
 
-        //Generate a string representing the match
-        String result = "";
-        for(TeleopEvent t : events) {
-            //Log.d("event", t.toStringGameTime(endTime));
-            result += t.toStringGameTime(endTime) + "; ";
-        }
+            //Generate a string representing the match
+            String result = "";
+            for(TeleopEvent t : events) {
+                //Log.d("event", t.toStringGameTime(endTime));
+                result += t.toStringGameTime(endTime) + "; ";
+            }
 
-        //Add the fuel data to that string
-        ArrayList<TeleopEvent> fuelData = new ArrayList<>();
+            //Add the fuel data to that string
+            ArrayList<TeleopEvent> fuelData = new ArrayList<>();
 
-        fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
-        fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
-        fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
-        fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
+            fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
+            fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
+            fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
+            fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
 
-        for(TeleopEvent t : fuelData) {
-            //Log.d("event", t.toStringGameTime(endTime));
-            result += t.toString() + "; ";
-        }
+            //Setting up data to send to the review activity
 
-        Log.d("result", result);
+            ArrayList<String> eventTypesList = new ArrayList<>();
+            ArrayList<String> eventValuesList = new ArrayList<>();
 
-        //Copy the string to clipboard
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Singularity Match Data", result);
-        clipboard.setPrimaryClip(clip);
+            for(TeleopEvent t : fuelData) {
+                //Log.d("event", t.toStringGameTime(endTime));
+                result += t.toString() + "; ";
+                eventTypesList.add(t.getEventTypeAsString());
+                eventValuesList.add(t.getValueAsString());
+            }
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Match data copied to clipboard", Toast.LENGTH_SHORT);
-        toast.show();
+            Log.d("result", result);
+
+            //Copy the string to clipboard
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Singularity Match Data", result);
+            clipboard.setPrimaryClip(clip);
+
+            Toast toast = Toast.makeText(getApplicationContext(), "Match data copied to clipboard", Toast.LENGTH_SHORT);
+            toast.show();
+
+            //Start review activity, pass the string data, and finish the current event
+            Intent intent = new Intent(GameActivity.this,ReviewActivity.class);
+            intent.putExtra("eventTypes", eventTypesList.toArray());
+            intent.putExtra("eventValues", eventValuesList.toArray());
+            intent.putExtra("dataString", result);
+            startActivity(intent);
+            finish();
 
         }
 
 
     }
 
-    //===========================================  PRIVATE CLASSES ==============================================
+    //===========================================  PRIVATE CLASSES ============================================//
 
     private class TeleopEvent
     {
@@ -362,6 +378,14 @@ public class GameActivity extends AppCompatActivity {
 
         public TeleopEventType getEventType() {
             return eventType;
+        }
+
+        public String getEventTypeAsString() {
+            return eventType.toString();
+        }
+
+        public String getValueAsString() {
+            return timestamp + "";
         }
 
         public String toString() {
