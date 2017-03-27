@@ -21,6 +21,8 @@ public class GameActivity extends AppCompatActivity {
 
     int scores_s, scores_f, pickups_s, pickups_f, gearsDropped;
     int low_s, low_f, high_s, high_f;
+    boolean climbing = false;
+    boolean climb_finished = false;
 
     ArrayList<TeleopEvent> events;
     ArrayList<TeleopEvent> undone;
@@ -147,6 +149,60 @@ public class GameActivity extends AppCompatActivity {
         updateCounters();
     }
 
+    //climbing
+
+    public void onStartClimb (View v)
+    {
+
+        if(climbing) { // if we are climbing when button clicked, remove all climbs from data
+
+            for(int i = 0; i < events.size(); i++) {
+                if(events.get(i).getEventType() == TeleopEventType.CLIMB_START)
+                    events.remove(i);
+            }
+            climbing = false;
+
+        } else if(!climb_finished) { //if we are have not started climbing when clicked, add a new start event
+            events.add(new TeleopEvent(TeleopEventType.CLIMB_START, System.currentTimeMillis()));
+            climbing = true;
+        } else{
+            for(int i = 0; i < events.size(); i++) { //if we have finished a climb when clicked, remove the event that ended the climb and continue climb
+                if(events.get(i).getEventType() == TeleopEventType.CLIMB_FINISH || events.get(i).getEventType() == TeleopEventType.CLIMB_FAIL)
+                    events.remove(i);
+            }
+            climb_finished = false;
+            climbing = true;
+        }
+
+        updateCounters();
+    }
+
+    public void onFinishClimb (View v)
+    {
+        if(climbing) {
+            events.add(new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis()));
+            climbing = false;
+            climb_finished = true;
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Not currently climbing", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        updateCounters();
+    }
+
+    public void onFailedClimb (View v)
+    {
+        if(climbing) {
+            events.add(new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis()));
+            climbing = false;
+            climb_finished = true;
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Not currently climbing", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        updateCounters();
+    }
+
     //Data methods
 
     public void updateCounters() {
@@ -206,8 +262,16 @@ public class GameActivity extends AppCompatActivity {
         Button btnHighGoalF = (Button) findViewById(R.id.btnHighGoalF);
         btnHighGoalF.setText(high_f + "");
 
+        //Climbing (change text of start/cancel button based on whether climbing or not
+        Button btnClimbStart = (Button) findViewById(R.id.btnClimbStart);
+        btnClimbStart.setText(climb_finished ? getString(R.string.climb_complete) : climbing ? getString(R.string.cancel_climb) : getString(R.string.start_climb));
+
+
         //Log.d("Update!", "updated values");
         Log.d("Updated array: ", events.toString());
+
+
+
     }
 
     public void setCountsToZero() {
@@ -304,24 +368,13 @@ public class GameActivity extends AppCompatActivity {
         LOW_GOAL_S,
         LOW_GOAL_F,
         HIGH_GOAL_S,
-        HIGH_GOAL_F
+        HIGH_GOAL_F,
 
         //Climb
+        CLIMB_START,
+        CLIMB_FINISH,
+        CLIMB_FAIL
     }
 
-    public void onStartClimb (View v)
-    {
-
-    }
-
-    public void onFinishClimb (View v)
-    {
-
-    }
-
-    public void onFailedClimb (View v)
-    {
-
-    }
 
 }

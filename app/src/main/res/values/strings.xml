@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Saline Singularity</string>
+    <string name="app_name">Singularity Scouting Application</string>
 
     <string name="title_activity_game">GameActivity</string>
     <string name="gear_dropped">Gear Dropped</string>
@@ -9,6 +9,12 @@
     <string name="dropped">Dropped</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
+    <string name="start_climb">Start</string>
+    <string name="cancel_climb">Cancel Climb</string>
+    <string name="finish_climb">Finish</string>
+    <string name="fail_climb">Fail</string>
+    <string name="climb_complete">Undo</string>
+
     <string name="Instructions">\tWhen you press the start match button you will be presented with the
         screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear
         that the robot receives, either from the gear slot or off the ground, press the green button

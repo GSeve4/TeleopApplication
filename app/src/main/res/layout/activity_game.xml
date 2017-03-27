@@ -307,20 +307,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btnClimbStart"
                 android:layout_weight="1"
-                android:text="Start"
-                android:backgroundTint="@color/btnGreen"
+                android:text="@string/start_climb"
                 android:onClick="onStartClimb" />
 
             <Button
-                android:text="Finish"
+                android:text="@string/finish_climb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnClimbFinish"
                 android:layout_weight="1"
-                android:onClick="onFinishClimb" />
+                android:onClick="onFinishClimb"
+                android:backgroundTint="@color/btnGreen" />
 
             <Button
-                android:text="Failed"
+                android:text="@string/fail_climb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnClimbFailed"
