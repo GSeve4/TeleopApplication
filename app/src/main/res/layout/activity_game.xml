@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="salinesingularity.singularitytimingapplication.GameActivity">
+    tools:context="salinesingularity.singularitytimingapplication.GameActivity"
+    android:layout_marginBottom="@dimen/small_vert_padding">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,9 +21,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <Space
+        <TextView
+            android:text="Gears"
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textSize="20sp"
+            android:textColor="?android:attr/textColorSecondary" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -124,7 +129,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
 
             <Button
                 android:text="@string/undo"
@@ -143,6 +149,75 @@
                 android:onClick="onRedo" />
         </LinearLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="@android:drawable/divider_horizontal_bright"
+            android:layout_marginBottom="@dimen/small_vert_padding" />
+
+        <TextView
+            android:text="Fuel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="20sp"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Low Goal"
+                android:layout_width="@dimen/lowHighGoalTvWidth"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvLowGoal" />
+
+            <Button
+                android:text="✓"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lowGoalS"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btnGreen" />
+
+            <Button
+                android:text="X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lowGoalF"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btnRed" />
+
+            <Space
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="40dp" />
+
+            <TextView
+                android:text="High Goal"
+                android:layout_width="@dimen/lowHighGoalTvWidth"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHighGoal" />
+
+            <Button
+                android:text="✓"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/HighGoalS"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btnGreen" />
+
+            <Button
+                android:text="X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/highGoalF"
+                android:layout_weight="1"
+                android:backgroundTint="@color/btnRed" />
+        </LinearLayout>
+
         <Button
             android:text="End Game"
             android:layout_width="match_parent"
@@ -151,5 +226,9 @@
             android:layout_marginTop="100dp"
             android:backgroundTint="#EDDBFF"
             android:onClick="onEndGame" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
     </LinearLayout>
 </RelativeLayout>

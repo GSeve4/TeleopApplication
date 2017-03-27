@@ -37,8 +37,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-        updateCounters();
+        //leaving this commented leaves the default text values on the buttons until one is pressed.
+        //updateCounters();
 
     }
 

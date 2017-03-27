@@ -5,4 +5,6 @@
     <dimen name="vert_padding">20dp</dimen>
     <dimen name="undo_redo_width">10dp</dimen>
     <dimen name="row_title_width">40dp</dimen>
+    <dimen name="small_vert_padding">10dp</dimen>
+    <dimen name="lowHighGoalTvWidth">65dp</dimen>
 </resources>
