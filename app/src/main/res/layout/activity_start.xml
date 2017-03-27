@@ -19,7 +19,7 @@
         android:text="@string/start_match" />
 
     <Button
-        android:text="Instructions"
+        android:text="@string/instructions"
         android:layout_width="350dp"
         android:id="@+id/btnInst"
         android:layout_alignParentBottom="true"

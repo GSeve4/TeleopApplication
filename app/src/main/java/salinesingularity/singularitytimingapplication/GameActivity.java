@@ -339,7 +339,7 @@ public class GameActivity extends AppCompatActivity {
                 eventValuesList.add(t.getValueAsString());
             }
 
-            Log.d("result", result);
+            //Log.d("result", result);
 
             //Copy the string to clipboard
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);

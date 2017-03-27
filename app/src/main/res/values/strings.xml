@@ -33,4 +33,5 @@
     <string name="copy_data">Copy To Clipboard Again</string>
     <string name="new_match">New Match</string>
     <string name="start_match">Start Match</string>
+    <string name="instructions">Instructions</string>
 </resources>
