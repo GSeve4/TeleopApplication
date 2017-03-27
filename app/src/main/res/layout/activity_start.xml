@@ -8,15 +8,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="salinesingularity.singularitytimingapplication.StartActivity"
-    android:gravity="center">
+    tools:context="salinesingularity.singularitytimingapplication.StartActivity">
 
     <Button
         android:text="START"
         android:layout_width="350dp"
         android:layout_height="100dp"
-        android:id="@+id/button"
+        android:id="@+id/btnStart"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Instructions"
+        android:layout_width="350dp"
+        android:id="@+id/btnInst"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:layout_height="50dp" />
 
 </RelativeLayout>
