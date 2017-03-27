@@ -10,14 +10,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static salinesingularity.singularitytimingapplication.R.id.btnDropped;
+
 public class GameActivity extends AppCompatActivity {
 
-    int gearsScored, gearsDropped, gearsPickedUp;
+    int scores_s, scores_f, pickups_s, pickups_f, gearsDropped;
     ArrayList<TeleopEvent> events;
+    ArrayList<TeleopEvent> undone;
 
     public final long GAME_LENGTH = 150000;
 
@@ -26,57 +30,132 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         events = new ArrayList<>();
+        undone = new ArrayList<>();
+
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        updateCounters();
 
     }
 
     public void onPickupS (View v)
     {
         events.add(new TeleopEvent(TeleopEventType.PICKUP_S, System.currentTimeMillis()));
-        updateValues();
+        updateCounters();
+        clearUndoneList();
     }
 
     public void onPickupF (View v)
     {
 
         events.add(new TeleopEvent(TeleopEventType.PICKUP_F, System.currentTimeMillis()));
-        updateValues();
+        updateCounters();
+        clearUndoneList();
     }
 
     public void onScoredS (View v)
     {
         events.add(new TeleopEvent(TeleopEventType.GEAR_SCORE_S, System.currentTimeMillis()));
-        updateValues();
+        updateCounters();
+        clearUndoneList();
     }
 
     public void onScoredF (View v)
     {
         events.add(new TeleopEvent(TeleopEventType.GEAR_SCORE_F, System.currentTimeMillis()));
-        updateValues();
+        updateCounters();
+        clearUndoneList();
     }
 
     public void onDropped (View v)
     {
         events.add(new TeleopEvent(TeleopEventType.GEAR_DROP, System.currentTimeMillis()));
-        updateValues();
+        updateCounters();
+        clearUndoneList();
     }
 
     public void onUndo (View v)
     {
-
+        if(events.size() > 0){
+            undone.add(events.remove(events.size() - 1));
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Nothing to undo!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        updateCounters();
     }
 
     public void onRedo (View v)
     {
-
+        if(undone.size() > 0) {
+            events.add(undone.remove(undone.size() - 1));
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Nothing to redo!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        updateCounters();
     }
 
-    public void updateValues() {
+    public void updateCounters() {
+
+        //Get the count of each type of event
+        setCountsToZero();
+        for(TeleopEvent e : events) {
+            switch (e.getEventType()) {
+                case PICKUP_S:
+                    pickups_s++;
+                    break;
+                case PICKUP_F:
+                    pickups_f++;
+                    break;
+                case GEAR_SCORE_S:
+                    scores_s++;
+                    break;
+                case GEAR_SCORE_F:
+                    scores_f++;
+                    break;
+                case GEAR_DROP:
+                    gearsDropped++;
+                    break;
+            }
+        }
+
+        //Set the buttons' text fields to their respective counts
+
+        Button btnPickupS = (Button) findViewById(R.id.btnPickupS);
+        btnPickupS.setText(pickups_s + "");
+
+        Button btnPickupF = (Button) findViewById(R.id.btnPickupF);
+        btnPickupF.setText(pickups_f + "");
+
+        Button btnScoreS = (Button) findViewById(R.id.btnScoreS);
+        btnScoreS.setText(scores_s + "");
+
+        Button btnScoreF = (Button) findViewById(R.id.btnScoreF);
+        btnScoreF.setText(scores_f + "");
+
+        TextView tvDropped = (TextView) findViewById(R.id.tvDropCount);
+        tvDropped.setText(gearsDropped + "");
+
         //Log.d("Update!", "updated values");
         Log.d("Updated array: ", events.toString());
+    }
+
+    public void setCountsToZero() {
+        scores_s = 0;
+        scores_f = 0;
+        pickups_s = 0;
+        pickups_f = 0;
+        gearsDropped = 0;
+    }
+
+    public void clearUndoneList() {
+
+        undone.clear();
     }
 
     public void onEndGame (View v)
@@ -113,6 +192,10 @@ public class GameActivity extends AppCompatActivity {
             this.timestamp = timestamp;
             this.eventType = eventType;
 
+        }
+
+        public TeleopEventType getEventType() {
+            return eventType;
         }
 
         public String toString() {

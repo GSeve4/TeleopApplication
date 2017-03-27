@@ -55,14 +55,6 @@
                 android:backgroundTint="@color/btnRed"
                 android:onClick="onPickupF" />
 
-            <TextView
-                android:text="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPikcupCount"
-                android:layout_weight="1"
-                android:gravity="center" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -82,27 +74,20 @@
                 android:text="@string/sucess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnScored"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btnGreen"
-                android:onClick="onScoredS" />
+                android:onClick="onScoredS"
+                android:id="@+id/btnScoreS" />
 
             <Button
                 android:text="@string/fail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnDropped"
+                android:id="@+id/btnScoreF"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btnRed"
                 android:onClick="onScoredF" />
 
-            <TextView
-                android:text="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvGearCount"
-                android:layout_weight="1"
-                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +107,7 @@
                 android:text="@string/gear_dropped"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnGearDropped"
+                android:id="@+id/btnDropped"
                 android:layout_weight="1"
                 android:onClick="onDropped" />
 
