@@ -11,333 +11,339 @@
     tools:context="salinesingularity.singularitytimingapplication.GameActivity"
     android:layout_marginBottom="@dimen/small_vert_padding">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:paddingBottom="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:text="Gears"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textSize="20sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/vert_padding">
+            android:padding="0dp"
+            android:paddingBottom="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <TextView
-                android:text="Pickup"
-                android:layout_width="@dimen/row_title_width"
+                android:text="Gears"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvGearsPickedUp"
-                android:layout_weight="1" />
+                android:id="@+id/textView"
+                android:textSize="20sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/vert_padding">
+
+                <TextView
+                    android:text="Pickup"
+                    android:layout_width="@dimen/row_title_width"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvGearsPickedUp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/sucess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnPickupS"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onPickupS" />
+
+                <Button
+                    android:text="@string/fail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnPickupF"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onPickupF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/vert_padding">
+
+                <TextView
+                    android:text="Scored"
+                    android:layout_width="@dimen/row_title_width"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvGearsScored"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/sucess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onScoredS"
+                    android:id="@+id/btnScoreS" />
+
+                <Button
+                    android:text="@string/fail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnScoreF"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onScoredF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/vert_padding">
+
+                <TextView
+                    android:text="@string/dropped"
+                    android:layout_width="@dimen/row_title_width"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDropped"
+                    android:layout_weight="0.46" />
+
+                <Button
+                    android:text="@string/gear_dropped"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnDropped"
+                    android:layout_weight="1"
+                    android:onClick="onDropped" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDropCount"
+                    android:layout_weight="0.44"
+                    android:gravity="center"
+                    android:layout_width="1dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:text="@string/undo"
+                    android:layout_width="@dimen/undo_redo_width"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnUndo"
+                    android:layout_weight="1"
+                    android:onClick="onUndo" />
+
+                <Button
+                    android:text="@string/redo"
+                    android:layout_width="@dimen/undo_redo_width"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnRedo"
+                    android:layout_weight="1"
+                    android:onClick="onRedo" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:drawable/divider_horizontal_bright"
+                android:layout_marginBottom="@dimen/small_vert_padding"
+                android:id="@+id/divider1" />
+
+            <TextView
+                android:text="Fuel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:textSize="20sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="Low Goal"
+                    android:layout_width="@dimen/lowHighGoalTvWidth"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLowGoal" />
+
+                <Button
+                    android:text="✓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLowGoalS"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onLowGoalS" />
+
+                <Button
+                    android:text="X"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLowGoalF"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onLowGoalF" />
+
+                <Space
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="40dp" />
+
+                <TextView
+                    android:text="High Goal"
+                    android:layout_width="@dimen/lowHighGoalTvWidth"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvHighGoal" />
+
+                <Button
+                    android:text="✓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnHighGoalS"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onHighGoalS" />
+
+                <Button
+                    android:text="X"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnHighGoalF"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onHighGoalF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/small_vert_padding">
+
+                <TextView
+                    android:text=""
+                    android:layout_width="@dimen/lowHighGoalTvWidth"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLowGoalFiller" />
+
+                <Button
+                    android:text="↓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLowGoalSDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onLowGoalSDec" />
+
+                <Button
+                    android:text="↓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLowGoalFDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onLowGoalFDec" />
+
+                <Space
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="40dp" />
+
+                <TextView
+                    android:layout_width="@dimen/lowHighGoalTvWidth"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvHighGoalDec" />
+
+                <Button
+                    android:text="↓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnHighGoalSDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnGreen"
+                    android:onClick="onHighGoalSDec" />
+
+                <Button
+                    android:text="↓"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnHighGoalFDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onHighGoalFDec" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:drawable/divider_horizontal_bright"
+                android:layout_marginBottom="@dimen/small_vert_padding"
+                android:id="@+id/divider2" />
+
+            <TextView
+                android:text="Climb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtClimb"
+                android:textSize="20sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnClimbStart"
+                    android:layout_weight="1"
+                    android:text="@string/start_climb"
+                    android:onClick="onStartClimb" />
+
+                <Button
+                    android:text="@string/finish_climb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnClimbFinish"
+                    android:layout_weight="1"
+                    android:onClick="onFinishClimb"
+                    android:backgroundTint="@color/btnGreen" />
+
+                <Button
+                    android:text="@string/fail_climb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnClimbFailed"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onFailedClimb" />
+
+            </LinearLayout>
 
             <Button
-                android:text="@string/sucess"
-                android:layout_width="wrap_content"
+                android:text="@string/default_end_game"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnPickupS"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onPickupS" />
-
-            <Button
-                android:text="@string/fail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnPickupF"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onPickupF" />
+                android:id="@+id/btnEndGame"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="#EDDBFF"
+                android:onClick="onEndGame" />
 
         </LinearLayout>
+    </ScrollView>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/vert_padding">
-
-            <TextView
-                android:text="Scored"
-                android:layout_width="@dimen/row_title_width"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvGearsScored"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="@string/sucess"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onScoredS"
-                android:id="@+id/btnScoreS" />
-
-            <Button
-                android:text="@string/fail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnScoreF"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onScoredF" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/vert_padding">
-
-            <TextView
-                android:text="@string/dropped"
-                android:layout_width="@dimen/row_title_width"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvDropped"
-                android:layout_weight="0.46" />
-
-            <Button
-                android:text="@string/gear_dropped"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnDropped"
-                android:layout_weight="1"
-                android:onClick="onDropped" />
-
-            <TextView
-                android:text="0"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvDropCount"
-                android:layout_weight="0.44"
-                android:gravity="center"
-                android:layout_width="1dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="10dp">
-
-            <Button
-                android:text="@string/undo"
-                android:layout_width="@dimen/undo_redo_width"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnUndo"
-                android:layout_weight="1"
-                android:onClick="onUndo" />
-
-            <Button
-                android:text="@string/redo"
-                android:layout_width="@dimen/undo_redo_width"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnRedo"
-                android:layout_weight="1"
-                android:onClick="onRedo" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="@android:drawable/divider_horizontal_bright"
-            android:layout_marginBottom="@dimen/small_vert_padding"
-            android:id="@+id/divider1" />
-
-        <TextView
-            android:text="Fuel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:textSize="20sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:text="Low Goal"
-                android:layout_width="@dimen/lowHighGoalTvWidth"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvLowGoal" />
-
-            <Button
-                android:text="✓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnLowGoalS"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onLowGoalS" />
-
-            <Button
-                android:text="X"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnLowGoalF"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onLowGoalF" />
-
-            <Space
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_width="40dp" />
-
-            <TextView
-                android:text="High Goal"
-                android:layout_width="@dimen/lowHighGoalTvWidth"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvHighGoal" />
-
-            <Button
-                android:text="✓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnHighGoalS"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onHighGoalS" />
-
-            <Button
-                android:text="X"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnHighGoalF"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onHighGoalF" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/small_vert_padding">
-
-            <TextView
-                android:text=""
-                android:layout_width="@dimen/lowHighGoalTvWidth"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvLowGoalFiller" />
-
-            <Button
-                android:text="↓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnLowGoalSDec"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onLowGoalSDec" />
-
-            <Button
-                android:text="↓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnLowGoalFDec"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onLowGoalFDec" />
-
-            <Space
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_width="40dp" />
-
-            <TextView
-                android:layout_width="@dimen/lowHighGoalTvWidth"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvHighGoalDec" />
-
-            <Button
-                android:text="↓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnHighGoalSDec"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnGreen"
-                android:onClick="onHighGoalSDec" />
-
-            <Button
-                android:text="↓"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnHighGoalFDec"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onHighGoalFDec" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="@android:drawable/divider_horizontal_bright"
-            android:layout_marginBottom="@dimen/small_vert_padding"
-            android:id="@+id/divider2" />
-
-        <TextView
-            android:text="Climb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtClimb"
-            android:textSize="20sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnClimbStart"
-                android:layout_weight="1"
-                android:text="@string/start_climb"
-                android:onClick="onStartClimb" />
-
-            <Button
-                android:text="@string/finish_climb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnClimbFinish"
-                android:layout_weight="1"
-                android:onClick="onFinishClimb"
-                android:backgroundTint="@color/btnGreen" />
-
-            <Button
-                android:text="@string/fail_climb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnClimbFailed"
-                android:layout_weight="1"
-                android:backgroundTint="@color/btnRed"
-                android:onClick="onFailedClimb" />
-
-        </LinearLayout>
-
-        <Button
-            android:text="@string/default_end_game"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnEndGame"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="#EDDBFF"
-            android:onClick="onEndGame" />
-
-    </LinearLayout>
 </RelativeLayout>
