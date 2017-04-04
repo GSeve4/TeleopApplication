@@ -29,6 +29,14 @@
             android:layout_alignParentStart="true">
 
             <TextView
+                android:text="TIMER"
+                android:layout_width="match_parent"
+                android:id="@+id/txtCountDownTimer"
+                android:textAlignment="center"
+                android:textSize="50sp"
+                android:layout_height="55dp" />
+
+            <TextView
                 android:text="Gears"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

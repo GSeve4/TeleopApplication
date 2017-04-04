@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,6 +35,8 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<TeleopEvent> undone;
 
     public final long GAME_LENGTH = 150000;
+    TextView countDownTimer = (TextView) findViewById(R.id.txtCountDownTimer);
+    public long startTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,18 @@ public class GameActivity extends AppCompatActivity {
         //leaving this commented leaves the default text values on the buttons until one is pressed.
         //updateCounters();
 
+        //starting a countdown timer when the activity opens
+        startTime = System.currentTimeMillis();
+        new CountDownTimer(150000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                countDownTimer.setText("Autonomous: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
     //gear button methods
