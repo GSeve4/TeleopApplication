@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import static salinesingularity.singularitytimingapplication.R.id.btnDropped;
+import static salinesingularity.singularitytimingapplication.R.id.tvGearScoreCount;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -247,6 +248,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Gears
 
+        /*
         Button btnPickupS = (Button) findViewById(R.id.btnPickupS);
         btnPickupS.setText(pickups_s + "");
 
@@ -258,12 +260,26 @@ public class GameActivity extends AppCompatActivity {
 
         Button btnScoreF = (Button) findViewById(R.id.btnScoreF);
         btnScoreF.setText(scores_f + "");
-
+*/
         TextView tvDropped = (TextView) findViewById(R.id.tvDropCount);
         tvDropped.setText(gearsDropped + "");
 
+        TextView tvGearScoreCount = (TextView) findViewById(R.id.tvGearScoreCount);
+        tvGearScoreCount.setText(scores_s + "");
+
+        TextView tvPickupFailCount = (TextView) findViewById(R.id.tvPickupFailCount);
+        tvPickupFailCount.setText(pickups_f + "");
+
+
         //Fuel
 
+        TextView tvLowGoalCount = (TextView) findViewById(R.id.tvLowGoalCount);
+        tvLowGoalCount.setText(low_s + "");
+
+        TextView tvHighGoalCount = (TextView) findViewById(R.id.tvHighGoalCount);
+        tvHighGoalCount.setText(high_s + "");
+
+        /*
         Button btnLowGoalS = (Button) findViewById(R.id.btnLowGoalS);
         btnLowGoalS.setText(low_s + "");
 
@@ -275,7 +291,7 @@ public class GameActivity extends AppCompatActivity {
 
         Button btnHighGoalF = (Button) findViewById(R.id.btnHighGoalF);
         btnHighGoalF.setText(high_f + "");
-
+*/
         //Climbing (change text of start/cancel button based on whether climbing or not
         Button btnClimbStart = (Button) findViewById(R.id.btnClimbStart);
         btnClimbStart.setText(climb_finished ? getString(R.string.climb_complete) : climbing ? getString(R.string.cancel_climb) : getString(R.string.start_climb));

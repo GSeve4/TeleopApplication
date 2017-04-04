@@ -7,6 +7,7 @@
     <string name="fail">Failed</string>
     <string name="sucess">Sucess</string>
     <string name="gear_scored">Gear Scored</string>
+    <string name="pickup_failed">Pickup Failed</string>
     <string name="dropped">Dropped</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
@@ -16,6 +17,8 @@
     <string name="fail_climb">Fail</string>
     <string name="climb_complete">Undo</string>
     <string name="default_end_game">End Game</string>
+    <string name="increment_symbol">+</string>
+    <string name="decrement_symbol">-</string>
 
     <string name="Instructions">\tWhen you press the start match button you will be presented with the
         screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear

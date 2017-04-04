@@ -30,7 +30,7 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //startTime = System.currentTimeMillis();
-                Intent intent = new Intent(StartActivity.this,AutonomousActivity.class);
+                Intent intent = new Intent(StartActivity.this,GameActivity.class);
                 //intent.putExtra("startTime", startTime);
                 startActivity(intent);
             }
