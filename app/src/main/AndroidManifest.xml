@@ -23,10 +23,6 @@
         <activity android:name=".InstructionActivity" />
         <activity android:name=".ReviewActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AutonomousActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
     </application>
 
 </manifest>

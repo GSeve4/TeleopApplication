@@ -37,6 +37,143 @@
                 android:layout_height="55dp" />
 
             <TextView
+                android:text="Autonomous Mode:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAuton"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="Start Position:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <RadioButton
+                        android:text="Boiler Side"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rdoBoiler"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:text="Center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rdoCenter"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:text="Gear Slot Side"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rdoSlot"
+                        android:layout_weight="1" />
+                </RadioGroup>
+
+                <Button
+                    android:text="Crossed Baseline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnAutonBaseline"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="Gear Scored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnAutonGear"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+
+                <TextView
+                    android:text="Low Goal"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/decrement_symbol"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnAutonLowGoalDown"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtAutonLowGoal"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <Button
+                    android:text="@string/increment_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnAutonLowGoalUp"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="High Goal"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/decrement_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnAutonHighGoalDown"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtAutonHighGoal"
+                    android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:text="@string/increment_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnAutonHighGoalUp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:text="Teleop Mode:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTeleop"
+                android:textSize="30sp" />
+
+            <TextView
                 android:text="Gears"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

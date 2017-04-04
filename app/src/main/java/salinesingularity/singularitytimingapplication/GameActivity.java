@@ -35,8 +35,8 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<TeleopEvent> undone;
 
     public final long GAME_LENGTH = 150000;
-    TextView countDownTimer = (TextView) findViewById(R.id.txtCountDownTimer);
     public long startTime;
+    TextView countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +55,17 @@ public class GameActivity extends AppCompatActivity {
         //updateCounters();
 
         //starting a countdown timer when the activity opens
+        countDownTimer = (TextView) findViewById(R.id.txtCountDownTimer);
         startTime = System.currentTimeMillis();
         new CountDownTimer(150000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
+            public void onTick(long millisUntilFinished)
+            {
                 countDownTimer.setText("Autonomous: " + millisUntilFinished / 1000);
             }
 
-            public void onFinish() {
+            public void onFinish()
+            {
 
             }
         }.start();
