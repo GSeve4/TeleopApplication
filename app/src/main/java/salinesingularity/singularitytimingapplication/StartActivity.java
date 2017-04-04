@@ -1,6 +1,7 @@
 package salinesingularity.singularitytimingapplication;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,16 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvTitle.setText(getString(R.string.app_name) + " v" + getString(R.string.app_version));
+
+        String versionName = "0.0";
+
+        try {
+            versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            //versionname = getString(R.string.app_version) //OLD WAY OF DOING THIS
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        tvTitle.setText(getString(R.string.app_name) + " v" + versionName);
 
         startButton = (Button) findViewById(R.id.btnStart);
         startButton.setOnClickListener(new View.OnClickListener()

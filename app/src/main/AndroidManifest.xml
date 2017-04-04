@@ -21,8 +21,12 @@
             android:name=".GameActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".InstructionActivity" />
-        <activity android:name=".ReviewActivity" />
-        <activity android:name=".AutonomousActivity"></activity>
+        <activity android:name=".ReviewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AutonomousActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
