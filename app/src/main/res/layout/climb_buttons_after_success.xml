@@ -15,7 +15,8 @@
             android:id="@+id/textView6"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/txtGreen" />
 
         <Button
             android:text="@string/undo_symbol"
