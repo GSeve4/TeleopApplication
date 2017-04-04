@@ -40,50 +40,10 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/vert_padding">
-
-                <TextView
-                    android:text="Pickup"
-                    android:layout_width="@dimen/row_title_width"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvGearsPickedUp"
-                    android:layout_weight="1" />
+                android:paddingBottom="10dp">
 
                 <Button
-                    android:text="@string/sucess"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnPickupS"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnGreen"
-                    android:onClick="onPickupS" />
-
-                <Button
-                    android:text="@string/fail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnPickupF"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onPickupF" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/vert_padding">
-
-                <TextView
-                    android:text="Scored"
-                    android:layout_width="@dimen/row_title_width"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvGearsScored"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:text="@string/sucess"
+                    android:text="@string/gear_scored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -92,13 +52,21 @@
                     android:id="@+id/btnScoreS" />
 
                 <Button
-                    android:text="@string/fail"
+                    android:text="@string/gear_dropped"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnScoreF"
+                    android:id="@+id/btnDropped"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onScoredF" />
+                    android:onClick="onDropped"
+                    android:backgroundTint="@color/btnRed" />
+
+                <Button
+                    android:text="@string/pickup_failed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnPickupF"
+                    android:layout_weight="1"
+                    android:onClick="onPickupF" />
 
             </LinearLayout>
 
@@ -109,27 +77,28 @@
                 android:paddingBottom="@dimen/vert_padding">
 
                 <TextView
-                    android:text="@string/dropped"
-                    android:layout_width="@dimen/row_title_width"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvDropped"
-                    android:layout_weight="0.46" />
-
-                <Button
-                    android:text="@string/gear_dropped"
+                    android:text="0"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnDropped"
-                    android:layout_weight="1"
-                    android:onClick="onDropped" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvGearScoreCount"
+                    android:layout_weight="0.44"
+                    android:gravity="center" />
 
                 <TextView
                     android:text="0"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/tvDropCount"
                     android:layout_weight="0.44"
                     android:gravity="center"
-                    android:layout_width="1dp" />
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvPickupFailCount"
+                    android:layout_weight="0.44"
+                    android:gravity="center" />
 
             </LinearLayout>
 
