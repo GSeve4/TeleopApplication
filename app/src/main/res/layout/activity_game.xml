@@ -13,7 +13,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -171,31 +174,39 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="75dp">
 
                 <TextView
                     android:text="Low Goal"
-                    android:layout_width="@dimen/lowHighGoalTvWidth"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvLowGoal" />
+                    android:id="@+id/tvLowGoal"
+                    android:layout_width="70dp" />
 
                 <Button
-                    android:text="✓"
+                    android:text="@string/decrement_symbol"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnLowGoalSDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onLowGoalSDec" />
+
+                <TextView
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvLowGoalCount"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:layout_width="50dp" />
+
+                <Button
+                    android:text="@string/increment_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnLowGoalS"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btnGreen"
                     android:onClick="onLowGoalS" />
-
-                <Button
-                    android:text="X"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnLowGoalF"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onLowGoalF" />
 
                 <Space
                     android:layout_height="wrap_content"
@@ -204,27 +215,36 @@
 
                 <TextView
                     android:text="High Goal"
-                    android:layout_width="@dimen/lowHighGoalTvWidth"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvHighGoal" />
+                    android:id="@+id/tvHighGoal"
+                    android:layout_width="70dp" />
 
                 <Button
-                    android:text="✓"
+                    android:text="@string/decrement_symbol"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnHighGoalSDec"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btnRed"
+                    android:onClick="onHighGoalSDec" />
+
+                <TextView
+                    android:text="0"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tvHighGoalCount"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_width="50dp" />
+
+                <Button
+                    android:text="@string/increment_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnHighGoalS"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btnGreen"
                     android:onClick="onHighGoalS" />
 
-                <Button
-                    android:text="X"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnHighGoalF"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onHighGoalF" />
             </LinearLayout>
 
             <LinearLayout
@@ -239,24 +259,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvLowGoalFiller" />
 
-                <Button
-                    android:text="↓"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnLowGoalSDec"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnGreen"
-                    android:onClick="onLowGoalSDec" />
-
-                <Button
-                    android:text="↓"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnLowGoalFDec"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onLowGoalFDec" />
-
                 <Space
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -267,23 +269,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvHighGoalDec" />
 
-                <Button
-                    android:text="↓"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnHighGoalSDec"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnGreen"
-                    android:onClick="onHighGoalSDec" />
-
-                <Button
-                    android:text="↓"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnHighGoalFDec"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onHighGoalFDec" />
             </LinearLayout>
 
             <View
