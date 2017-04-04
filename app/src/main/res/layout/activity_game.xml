@@ -39,13 +39,13 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:layout_height="80dp">
 
                 <Button
                     android:text="@string/gear_scored"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="@color/btnGreen"
                     android:onClick="onScoredS"
@@ -54,7 +54,7 @@
                 <Button
                     android:text="@string/gear_dropped"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnDropped"
                     android:layout_weight="1"
                     android:onClick="onDropped"
@@ -63,7 +63,7 @@
                 <Button
                     android:text="@string/pickup_failed"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnPickupF"
                     android:layout_weight="1"
                     android:onClick="onPickupF" />
@@ -105,24 +105,33 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="70dp"
                 android:paddingBottom="10dp">
 
-                <Button
-                    android:text="@string/undo"
-                    android:layout_width="@dimen/undo_redo_width"
+                <Space
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnUndo"
-                    android:layout_weight="1"
-                    android:onClick="onUndo" />
+                    android:layout_weight="6" />
 
                 <Button
-                    android:text="@string/redo"
+                    android:text="@string/undo_symbol"
                     android:layout_width="@dimen/undo_redo_width"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnUndo"
+                    android:layout_weight="1"
+                    android:onClick="onUndo"
+                    android:hapticFeedbackEnabled="true"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:text="@string/redo_symbol"
+                    android:layout_width="@dimen/undo_redo_width"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnRedo"
                     android:layout_weight="1"
-                    android:onClick="onRedo" />
+                    android:onClick="onRedo"
+                    android:hapticFeedbackEnabled="true"
+                    android:textSize="22sp" />
             </LinearLayout>
 
             <View
@@ -258,33 +267,16 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:id="@+id/climbContainer"
+                android:layout_height="70dp">
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/btnClimbStart"
                     android:layout_weight="1"
                     android:text="@string/start_climb"
                     android:onClick="onStartClimb" />
-
-                <Button
-                    android:text="@string/finish_climb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnClimbFinish"
-                    android:layout_weight="1"
-                    android:onClick="onFinishClimb"
-                    android:backgroundTint="@color/btnGreen" />
-
-                <Button
-                    android:text="@string/fail_climb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnClimbFailed"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/btnRed"
-                    android:onClick="onFailedClimb" />
 
             </LinearLayout>
 

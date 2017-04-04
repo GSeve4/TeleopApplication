@@ -1,27 +1,21 @@
 package salinesingularity.singularitytimingapplication;
 
-import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static salinesingularity.singularitytimingapplication.R.id.btnDropped;
-import static salinesingularity.singularitytimingapplication.R.id.tvGearScoreCount;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -31,6 +25,8 @@ public class GameActivity extends AppCompatActivity {
     boolean climb_finished = false;
     boolean end_match_pressed = false;
     long endTime = 0;
+    ClimbState climb = ClimbState.NOT_ATTEMPTED;
+    ClimbState prevClimb = ClimbState.NOT_ATTEMPTED;
 
     ArrayList<TeleopEvent> events;
     ArrayList<TeleopEvent> undone;
@@ -162,6 +158,7 @@ public class GameActivity extends AppCompatActivity {
     public void onStartClimb (View v)
     {
 
+        /*
         if(climbing) { // if we are climbing when button clicked, remove all climbs from data
 
             for(int i = 0; i < events.size(); i++) {
@@ -181,12 +178,23 @@ public class GameActivity extends AppCompatActivity {
             climb_finished = false;
             climbing = true;
         }
+        */
+
+
+        climb = ClimbState.STARTED;
+
 
         updateCounters();
     }
 
     public void onFinishClimb (View v)
     {
+
+        climb = ClimbState.SUCCESS;
+        events.add(new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis()));
+
+
+        /*
         if(climbing) {
             events.add(new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis()));
             climbing = false;
@@ -195,11 +203,19 @@ public class GameActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Not currently climbing", Toast.LENGTH_SHORT);
             toast.show();
         }
+        */
         updateCounters();
     }
 
     public void onFailedClimb (View v)
     {
+
+        climb = ClimbState.FAILURE;
+
+
+        events.add(new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis()));
+
+        /*
         if(climbing) {
             events.add(new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis()));
             climbing = false;
@@ -207,6 +223,26 @@ public class GameActivity extends AppCompatActivity {
         } else {
             Toast toast = Toast.makeText(getApplicationContext(), "Not currently climbing", Toast.LENGTH_SHORT);
             toast.show();
+        }
+        */
+        updateCounters();
+    }
+
+    public void onClimbEventUndo(View v) {
+
+        for(int i = 0; i < events.size(); i++) { //if we have finished a climb when clicked, remove the event that ended the climb and continue climb
+            if(events.get(i).getEventType() == TeleopEventType.CLIMB_FINISH || events.get(i).getEventType() == TeleopEventType.CLIMB_FAIL)
+                events.remove(i);
+        }
+
+        if(climb == ClimbState.STARTED) {
+            climb = ClimbState.NOT_ATTEMPTED;
+        }
+        else if(climb == ClimbState.SUCCESS){
+            climb = ClimbState.STARTED;
+        }
+        else if(climb == ClimbState.FAILURE){
+            climb = ClimbState.STARTED;
         }
         updateCounters();
     }
@@ -270,7 +306,6 @@ public class GameActivity extends AppCompatActivity {
         TextView tvPickupFailCount = (TextView) findViewById(R.id.tvPickupFailCount);
         tvPickupFailCount.setText(pickups_f + "");
 
-
         //Fuel
 
         TextView tvLowGoalCount = (TextView) findViewById(R.id.tvLowGoalCount);
@@ -291,10 +326,40 @@ public class GameActivity extends AppCompatActivity {
 
         Button btnHighGoalF = (Button) findViewById(R.id.btnHighGoalF);
         btnHighGoalF.setText(high_f + "");
-*/
+
+        */
+
+        //Climbing (new version)
+        if(climb != prevClimb) {
+            prevClimb = climb;
+            LinearLayout climbLayout = (LinearLayout) findViewById(R.id.climbContainer);
+            climbLayout.removeAllViews();
+
+            LayoutInflater layoutInflater = (LayoutInflater)
+                    this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            switch(climb){
+                case NOT_ATTEMPTED:
+                    climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_initial, climbLayout, false) );
+                    break;
+                case STARTED:
+                    climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_press, climbLayout, false) );
+                    break;
+                case SUCCESS:
+                    climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_success, climbLayout, false) );
+                    break;
+                case FAILURE:
+                    climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_fail, climbLayout, false) );
+                    break;
+            }
+            climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_fail, climbLayout, false) );
+
+        }
+
+
         //Climbing (change text of start/cancel button based on whether climbing or not
-        Button btnClimbStart = (Button) findViewById(R.id.btnClimbStart);
-        btnClimbStart.setText(climb_finished ? getString(R.string.climb_complete) : climbing ? getString(R.string.cancel_climb) : getString(R.string.start_climb));
+        //Button btnClimbStart = (Button) findViewById(R.id.btnClimbStart);
+        //btnClimbStart.setText(climb_finished ? getString(R.string.climb_complete) : climbing ? getString(R.string.cancel_climb) : getString(R.string.start_climb));
 
 
         //Log.d("Update!", "updated values");
@@ -457,6 +522,13 @@ public class GameActivity extends AppCompatActivity {
         CLIMB_START,
         CLIMB_FINISH,
         CLIMB_FAIL
+    }
+
+    private enum ClimbState {
+        NOT_ATTEMPTED,
+        STARTED,
+        SUCCESS,
+        FAILURE
     }
 
 

@@ -11,14 +11,18 @@
     <string name="dropped">Dropped</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
-    <string name="start_climb">Start</string>
+    <string name="start_climb">Climb Attempted</string>
     <string name="cancel_climb">Cancel Climb</string>
-    <string name="finish_climb">Finish</string>
-    <string name="fail_climb">Fail</string>
-    <string name="climb_complete">Undo</string>
+    <string name="finish_climb">Beacon Lit</string>
+    <string name="fail_climb">Fall/Jam/Failure</string>
+    <string name="climb_failed">Climb Failed</string>
+    <string name="climb_complete">Climb Success</string>
+    <string name="climb_not_in_time">Not finished in time</string>
     <string name="default_end_game">End Game</string>
     <string name="increment_symbol">+</string>
     <string name="decrement_symbol">-</string>
+    <string name="undo_symbol">⟲</string>
+    <string name="redo_symbol">⟳</string>
 
     <string name="Instructions">\tWhen you press the start match button you will be presented with the
         screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear

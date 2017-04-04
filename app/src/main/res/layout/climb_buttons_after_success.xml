@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:text="@string/climb_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:text="@string/undo_symbol"
+            android:layout_width="74dp"
+            android:layout_height="match_parent"
+            android:id="@+id/button7"
+            android:textSize="28sp"
+            android:layout_weight="0.22"
+            android:onClick="onClimbEventUndo" />
+
+    </LinearLayout>
+
+</LinearLayout>

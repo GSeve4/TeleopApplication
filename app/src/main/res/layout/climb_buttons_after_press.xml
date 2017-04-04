@@ -23,45 +23,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/btnClimbFailure"
-            android:layout_weight="1"
             android:backgroundTint="@color/btnRed"
-            android:onClick="onFailedClimb" />
+            android:onClick="onFailedClimb"
+            android:layout_weight="1" />
 
         <Button
             android:text="@string/undo_symbol"
-            android:layout_width="71dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/button5"
             android:textSize="28sp"
-            android:layout_weight="0.15" />
+            android:onClick="onClimbEventUndo"
+            android:layout_weight="0.5" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
 
-        <TextView
-            android:text="@string/climb_complete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:layout_weight="1"
-            android:gravity="center" />
 
-        <Button
-            android:text="@string/undo_symbol"
-            android:layout_width="74dp"
-            android:layout_height="match_parent"
-            android:id="@+id/button7"
-            android:textSize="28sp"
-            android:layout_weight="0.22" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></LinearLayout>
 </LinearLayout>
