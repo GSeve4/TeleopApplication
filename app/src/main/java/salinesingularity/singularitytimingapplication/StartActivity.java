@@ -12,6 +12,7 @@ public class StartActivity extends AppCompatActivity {
 
     Button startButton;
     Button instructionButton;
+    //long startTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,7 +29,9 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(StartActivity.this,GameActivity.class);
+                //startTime = System.currentTimeMillis();
+                Intent intent = new Intent(StartActivity.this,AutonomousActivity.class);
+                //intent.putExtra("startTime", startTime);
                 startActivity(intent);
             }
         });
