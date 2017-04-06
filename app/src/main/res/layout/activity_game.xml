@@ -42,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtAuton"
                 android:textSize="30sp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
 
             <TextView
                 android:text="Start Position:"
@@ -184,7 +185,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTeleop"
                 android:textSize="30sp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:gravity="center" />
 
             <TextView
                 android:text="Gears"
@@ -409,10 +411,10 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_height="2dp"
                 android:background="@android:drawable/divider_horizontal_bright"
                 android:layout_marginBottom="@dimen/small_vert_padding"
-                android:id="@+id/divider2" />
+                android:id="@+id/divider2"
+                android:layout_height="2dp" />
 
             <TextView
                 android:text="Climb"
