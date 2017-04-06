@@ -2,9 +2,9 @@
 <resources>
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
-    <color name="colorPrimary">#dfcf1f</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ffcc00</color>
+    <color name="colorPrimaryDark">#2c398d</color>
+    <color name="colorAccent">#dfcf1f</color>
 
     <color name="btnGreen">#ccffcc</color>
     <color name="btnRed">#ffcccc</color>

@@ -9,7 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="salinesingularity.singularitytimingapplication.InstructionActivity"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@color/colorPrimaryDark">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,16 +25,21 @@
                 android:text="@string/Instructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:id="@+id/tvInstructions" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:id="@+id/tvInstructions"
+                android:textStyle="normal|bold" />
 
             <Button
                 android:text="Back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnReturn"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="normal|bold"
+                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 

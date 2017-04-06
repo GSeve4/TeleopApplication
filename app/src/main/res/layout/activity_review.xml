@@ -9,31 +9,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="salinesingularity.singularitytimingapplication.ReviewActivity">
+    tools:context="salinesingularity.singularitytimingapplication.ReviewActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:text="@string/review_screen_text"
-        android:layout_width="@dimen/review_text_width"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/button"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_width="300dp" />
 
     <Button
         android:text="@string/copy_data"
@@ -43,7 +32,10 @@
         android:onClick="onCopyToClipboard"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="@string/new_match"
@@ -56,6 +48,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/btnCopyDataAgain"
-        android:layout_toEndOf="@+id/btnCopyDataAgain" />
+        android:layout_toEndOf="@+id/btnCopyDataAgain"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:srcCompat="@drawable/SalineSingularityLogo2"
+        android:id="@+id/imageView2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
