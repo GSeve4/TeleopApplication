@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,10 @@ public class GameActivity extends AppCompatActivity {
 
     int auton_low = 0;
     int auton_high = 0;
+
+    boolean autonGearAttempted = false;
+    boolean autonGearSuccessful = false;
+    long autonGearScoreTime;
 
     boolean climbing = false;
     boolean climb_finished = false;
@@ -50,6 +55,9 @@ public class GameActivity extends AppCompatActivity {
 
         events = new ArrayList<>();
         undone = new ArrayList<>();
+
+        autonGearSuccessful = false;
+        autonGearAttempted = false;
 
         activityStartTime = System.currentTimeMillis();
 
@@ -93,6 +101,22 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //Autonomous button methods
+
+    public void onAutonGearButtonClick(View v) {
+
+        if(autonGearAttempted){
+            if(autonGearSuccessful) {
+                autonGearSuccessful = false;
+            } else {
+                autonGearSuccessful = true;
+                autonGearScoreTime = System.currentTimeMillis();
+            }
+        } else {
+            autonGearAttempted = true;
+        }
+
+        updateCounters();
+    }
 
     public void onAutonLowGoal(View v){
         auton_low++;
@@ -425,8 +449,22 @@ public class GameActivity extends AppCompatActivity {
                     climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_fail, climbLayout, false) );
                     break;
             }
-            climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_fail, climbLayout, false) );
+            //climbLayout.addView(layoutInflater.inflate(R.layout.climb_buttons_after_fail, climbLayout, false) );
+        }
 
+
+        //Auton gear button
+
+        Button btnAutonGear = (Button) findViewById(R.id.btnAutonGear);
+
+        if(autonGearAttempted){
+            if(autonGearSuccessful){
+                btnAutonGear.setText(getString(R.string.undo) + " Score");
+            } else {
+                btnAutonGear.setText(getString(R.string.auton_gear_success));
+            }
+        } else {
+            btnAutonGear.setText(getString(R.string.auton_gear_attempted));
         }
 
 
@@ -471,6 +509,12 @@ public class GameActivity extends AppCompatActivity {
 
             events.add(climbEvent);
 
+            if(autonGearSuccessful) events.add(0, new TeleopEvent(TeleopEventType.AUTON_GEAR_SUCCESS, autonGearScoreTime));
+            if(autonGearAttempted) events.add(0, new TeleopEvent(TeleopEventType.AUTON_GEAR_ATTEMPTED, activityStartTime));
+
+            CheckBox baselineCheckBox = (CheckBox) findViewById(R.id.baselineCheckbox);
+            if(baselineCheckBox.isChecked()) events.add(0, new TeleopEvent(TeleopEventType.BASELINE_CROSSED, activityStartTime));
+
             //Generate a string representing the match
             String result = "";
             for(TeleopEvent t : events) {
@@ -513,11 +557,13 @@ public class GameActivity extends AppCompatActivity {
             toast.show();
 
             //Start review activity, pass the string data, and finish the current event
+            /*
             Intent intent = new Intent(GameActivity.this,ReviewActivity.class);
             intent.putExtra("eventTypes", eventTypesList.toArray());
             intent.putExtra("eventValues", eventValuesList.toArray());
             intent.putExtra("dataString", result);
             startActivity(intent);
+            */
             finish();
 
         }
@@ -558,8 +604,13 @@ public class GameActivity extends AppCompatActivity {
         }
 
         public String toStringGameTime(long endTime) {
+            /*
             double gameTime = ((double)(GAME_LENGTH - (endTime - timestamp))) / 1000.0;
             return eventType + ", " + gameTime;
+            */
+            double gameTime = ((double) timestamp - activityStartTime) / 1000.0;
+            return eventType + ", " + gameTime;
+
         }
 
     }
@@ -612,7 +663,11 @@ public class GameActivity extends AppCompatActivity {
         CLIMB_START,
         CLIMB_FINISH,
         CLIMB_FAIL,
-        CLIMB_NOT_ATTEMPTED
+        CLIMB_NOT_ATTEMPTED,
+
+        //Other Auton
+        BASELINE_CROSSED,
+
     }
 
     private enum ClimbState {

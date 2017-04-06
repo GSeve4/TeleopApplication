@@ -83,21 +83,22 @@
                         android:layout_weight="1" />
                 </RadioGroup>
 
-                <Button
+                <CheckBox
                     android:text="Crossed Baseline"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/btnAutonBaseline"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/baselineCheckbox"
                     android:layout_weight="1"
-                    android:onClick="onBaselineCrossed" />
+                    android:checked="false" />
 
                 <Button
-                    android:text="Gear Attempted"
+                    android:text="@string/auton_gear_attempted"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonGear"
                     android:layout_weight="1"
                     android:onClick="onAutonGearButtonClick" />
+
             </LinearLayout>
 
             <LinearLayout

@@ -24,6 +24,9 @@
     <string name="undo_symbol">⟲</string>
     <string name="redo_symbol">⟳</string>
 
+    <string name="auton_gear_attempted">Gear Attempted</string>
+    <string name="auton_gear_success">Gear Scored</string>
+
     <string name="Instructions">\tWhen you press the start match button you will be presented with the
         screen you will use while in teleop. Do not record scores in Autonomous mode.\n\n\tFor every gear
         that the robot receives, either from the gear slot or off the ground, press the green button
