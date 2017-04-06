@@ -11,10 +11,18 @@
     tools:context="salinesingularity.singularitytimingapplication.GameActivity"
     android:layout_marginBottom="@dimen/small_vert_padding">
 
+    <TextView
+        android:text="TIMER"
+        android:layout_width="match_parent"
+        android:id="@+id/txtCountDownTimer"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:layout_height="65dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/txtCountDownTimer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -29,15 +37,7 @@
             android:layout_alignParentStart="true">
 
             <TextView
-                android:text="TIMER"
-                android:layout_width="match_parent"
-                android:id="@+id/txtCountDownTimer"
-                android:textAlignment="center"
-                android:textSize="50sp"
-                android:layout_height="65dp" />
-
-            <TextView
-                android:text="Autonomous Mode:"
+                android:text="Autonomous:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtAuton"
@@ -179,7 +179,7 @@
             </LinearLayout>
 
             <TextView
-                android:text="Teleop Mode:"
+                android:text="Teleop:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTeleop"
