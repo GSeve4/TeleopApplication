@@ -48,7 +48,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        app:srcCompat="@drawable/SalineSingularityLogo2"
+        app:srcCompat="@drawable/singularity_logo_2"
         android:id="@+id/imgHornet"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
