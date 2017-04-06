@@ -41,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtAuton"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:layout_marginTop="7dp" />
 
             <TextView
                 android:text="Start Position:"
@@ -87,14 +88,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonBaseline"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onBaselineCrossed" />
 
                 <Button
-                    android:text="Gear Scored"
+                    android:text="Gear Attempted"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonGear"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onAutonGearButtonClick" />
             </LinearLayout>
 
             <LinearLayout
@@ -114,13 +117,15 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/btnAutonLowGoalDown"
                     android:layout_weight="1"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:onClick="onAutonLowGoalDec"
+                    android:backgroundTint="@color/btnRed" />
 
                 <TextView
                     android:text="0"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtAutonLowGoal"
+                    android:id="@+id/tvAutonLowGoal"
                     android:layout_weight="1"
                     android:gravity="center" />
 
@@ -129,12 +134,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonLowGoalUp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onAutonLowGoal"
+                    android:backgroundTint="@color/btnGreen" />
 
                 <Space
-                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_width="40dp" />
 
                 <TextView
                     android:text="High Goal"
@@ -148,12 +155,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonHighGoalDown"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onAutonHighGoalDec"
+                    android:backgroundTint="@color/btnRed" />
 
                 <TextView
                     android:text="0"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtAutonHighGoal"
+                    android:id="@+id/tvAutonHighGoal"
                     android:layout_weight="1"
                     android:layout_width="50dp"
                     android:gravity="center" />
@@ -163,7 +172,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btnAutonHighGoalUp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onAutonHighGoal"
+                    android:backgroundTint="@color/btnGreen" />
             </LinearLayout>
 
             <TextView

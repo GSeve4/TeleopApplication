@@ -24,12 +24,18 @@ public class GameActivity extends AppCompatActivity {
 
     int scores_s, scores_f, pickups_s, pickups_f, gearsDropped;
     int low_s, low_f, high_s, high_f;
+
+    int auton_low = 0;
+    int auton_high = 0;
+
     boolean climbing = false;
     boolean climb_finished = false;
     boolean end_match_pressed = false;
     long endTime = 0;
     ClimbState climb = ClimbState.NOT_ATTEMPTED;
     ClimbState prevClimb = ClimbState.NOT_ATTEMPTED;
+    TeleopEvent climbEvent;
+    long activityStartTime;
 
     ArrayList<TeleopEvent> events;
     ArrayList<TeleopEvent> undone;
@@ -45,6 +51,9 @@ public class GameActivity extends AppCompatActivity {
         events = new ArrayList<>();
         undone = new ArrayList<>();
 
+        activityStartTime = System.currentTimeMillis();
+
+        climbEvent = new TeleopEvent(TeleopEventType.CLIMB_NOT_ATTEMPTED, System.currentTimeMillis());
 
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -57,11 +66,23 @@ public class GameActivity extends AppCompatActivity {
         //starting a countdown timer when the activity opens
         countDownTimer = (TextView) findViewById(R.id.txtCountDownTimer);
         startTime = System.currentTimeMillis();
-        new CountDownTimer(150000, 1000) {
+        new CountDownTimer(152000, 1000) {
 
             public void onTick(long millisUntilFinished)
             {
-                countDownTimer.setText("Autonomous: " + millisUntilFinished / 1000);
+
+                int secondsUntilFinished = ((int) millisUntilFinished / 1000) + 1;
+
+                String gameMode = "Teleop";
+                if(secondsUntilFinished <= 135){
+                    if(secondsUntilFinished <= 30)
+                    {
+                    gameMode = "Endgame";}
+                } else {
+                    gameMode = "Autonomous";
+                }
+
+                countDownTimer.setText(gameMode + ": " + (secondsUntilFinished - 2));
             }
 
             public void onFinish()
@@ -70,6 +91,30 @@ public class GameActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+    //Autonomous button methods
+
+    public void onAutonLowGoal(View v){
+        auton_low++;
+        updateCounters();
+    }
+
+    public void onAutonLowGoalDec(View v){
+        auton_low--;
+        updateCounters();
+    }
+
+    public void onAutonHighGoal(View v){
+        auton_high++;
+        updateCounters();
+    }
+
+    public void onAutonHighGoalDec(View v){
+        auton_high--;
+        updateCounters();
+    }
+
+
 
     //gear button methods
 
@@ -111,7 +156,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onUndo (View v)
     {
-        if(events.size() > 0){
+        if(events.size() > 0 && (events.get(events.size() - 1).getEventType() != TeleopEventType.CLIMB_START && events.get(events.size() - 1).getEventType() != TeleopEventType.CLIMB_FINISH && events.get(events.size() - 1).getEventType() != TeleopEventType.CLIMB_FAIL)){
             undone.add(events.remove(events.size() - 1));
         } else {
             Toast toast = Toast.makeText(getApplicationContext(), "Nothing to undo!", Toast.LENGTH_SHORT);
@@ -202,6 +247,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         climb = ClimbState.STARTED;
+        climbEvent = new TeleopEvent(TeleopEventType.CLIMB_START, System.currentTimeMillis());
 
 
         updateCounters();
@@ -211,7 +257,8 @@ public class GameActivity extends AppCompatActivity {
     {
 
         climb = ClimbState.SUCCESS;
-        events.add(new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis()));
+        climbEvent = new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis());
+        //events.add(new TeleopEvent(TeleopEventType.CLIMB_FINISH, System.currentTimeMillis()));
 
 
         /*
@@ -231,9 +278,9 @@ public class GameActivity extends AppCompatActivity {
     {
 
         climb = ClimbState.FAILURE;
+        climbEvent = new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis());
 
-
-        events.add(new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis()));
+        //events.add(new TeleopEvent(TeleopEventType.CLIMB_FAIL, System.currentTimeMillis()));
 
         /*
         if(climbing) {
@@ -334,6 +381,12 @@ public class GameActivity extends AppCompatActivity {
         TextView tvHighGoalCount = (TextView) findViewById(R.id.tvHighGoalCount);
         tvHighGoalCount.setText(high_s + "");
 
+        TextView tvAutonLowGoal = (TextView) findViewById(R.id.tvAutonLowGoal);
+        tvAutonLowGoal.setText(auton_low + "");
+
+        TextView tvAutonHighGoal = (TextView) findViewById(R.id.tvAutonHighGoal);
+        tvAutonHighGoal.setText(auton_high + "");
+
         /*
         Button btnLowGoalS = (Button) findViewById(R.id.btnLowGoalS);
         btnLowGoalS.setText(low_s + "");
@@ -413,27 +466,36 @@ public class GameActivity extends AppCompatActivity {
             endTime = System.currentTimeMillis();
         } else { //if the end match button has been pressed once
 
+            ArrayList<String> eventTypesList = new ArrayList<>();
+            ArrayList<String> eventValuesList = new ArrayList<>();
+
+            events.add(climbEvent);
+
             //Generate a string representing the match
             String result = "";
             for(TeleopEvent t : events) {
                 //Log.d("event", t.toStringGameTime(endTime));
                 result += t.toStringGameTime(endTime) + "; ";
+                eventTypesList.add(t.getEventTypeAsString());
+                eventValuesList.add(t.getValueAsString());
             }
 
-            //Add the fuel data to that string
-            ArrayList<TeleopEvent> fuelData = new ArrayList<>();
+            //Add all additional data to that string
+            ArrayList<TeleopEvent> additionalData = new ArrayList<>();
 
-            fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
-            fuelData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
-            fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
-            fuelData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
+            additionalData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_S, (long) low_s));
+            additionalData.add(new TeleopEvent(TeleopEventType.LOW_GOAL_F, low_f));
+            additionalData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_S, high_s));
+            additionalData.add(new TeleopEvent(TeleopEventType.HIGH_GOAL_F, high_f));
+
+            additionalData.add(new TeleopEvent(TeleopEventType.AUTON_HIGH_GOAL_S, auton_high));
+            additionalData.add(new TeleopEvent(TeleopEventType.AUTON_LOW_GOAL_S, auton_low));
+
 
             //Setting up data to send to the review activity
 
-            ArrayList<String> eventTypesList = new ArrayList<>();
-            ArrayList<String> eventValuesList = new ArrayList<>();
 
-            for(TeleopEvent t : fuelData) {
+            for(TeleopEvent t : additionalData) {
                 //Log.d("event", t.toStringGameTime(endTime));
                 result += t.toString() + "; ";
                 eventTypesList.add(t.getEventTypeAsString());
@@ -532,16 +594,25 @@ public class GameActivity extends AppCompatActivity {
         GEAR_SCORE_F,
         GEAR_DROP,
 
+        AUTON_GEAR_ATTEMPTED,
+        AUTON_GEAR_SUCCESS,
+
         //Fuel
         LOW_GOAL_S,
         LOW_GOAL_F,
         HIGH_GOAL_S,
         HIGH_GOAL_F,
 
+        AUTON_LOW_GOAL_S,
+        AUTON_LOW_GOAL_F,
+        AUTON_HIGH_GOAL_S,
+        AUTON_HIGH_GOAL_F,
+
         //Climb
         CLIMB_START,
         CLIMB_FINISH,
-        CLIMB_FAIL
+        CLIMB_FAIL,
+        CLIMB_NOT_ATTEMPTED
     }
 
     private enum ClimbState {
