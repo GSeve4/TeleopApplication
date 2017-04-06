@@ -34,7 +34,7 @@
                 android:id="@+id/txtCountDownTimer"
                 android:textAlignment="center"
                 android:textSize="50sp"
-                android:layout_height="55dp" />
+                android:layout_height="65dp" />
 
             <TextView
                 android:text="Autonomous Mode:"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtAuton"
                 android:textSize="30sp"
-                android:layout_marginTop="7dp" />
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:text="Start Position:"
@@ -94,10 +94,10 @@
                 <Button
                     android:text="@string/auton_gear_attempted"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:id="@+id/btnAutonGear"
                     android:layout_weight="1"
-                    android:onClick="onAutonGearButtonClick" />
+                    android:onClick="onAutonGearButtonClick"
+                    android:layout_height="90dp" />
 
             </LinearLayout>
 
@@ -183,7 +183,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTeleop"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:layout_marginTop="20dp" />
 
             <TextView
                 android:text="Gears"
@@ -440,11 +441,11 @@
             <Button
                 android:text="@string/default_end_game"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
                 android:id="@+id/btnEndGame"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#EDDBFF"
-                android:onClick="onEndGame" />
+                android:onClick="onEndGame"
+                android:layout_height="65dp" />
 
         </LinearLayout>
     </ScrollView>
