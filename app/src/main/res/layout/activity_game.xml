@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="salinesingularity.singularitytimingapplication.GameActivity"
     android:layout_marginBottom="@dimen/small_vert_padding">
@@ -60,24 +60,25 @@
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    android:layout_weight="1"
+                    android:id="@+id/radioStartPos">
 
                     <RadioButton
-                        android:text="Boiler Side"
+                        android:text="@string/boiler_side"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/rdoBoiler"
                         android:layout_weight="1" />
 
                     <RadioButton
-                        android:text="Center"
+                        android:text="@string/center_peg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/rdoCenter"
                         android:layout_weight="1" />
 
                     <RadioButton
-                        android:text="Gear Slot Side"
+                        android:text="@string/gear_slot_side"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/rdoSlot"
@@ -179,13 +180,21 @@
                     android:backgroundTint="@color/btnGreen" />
             </LinearLayout>
 
+            <View
+                android:layout_width="fill_parent"
+                android:background="@android:drawable/divider_horizontal_bright"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/view"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_height="3dp" />
+
             <TextView
                 android:text="Teleop:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTeleop"
                 android:textSize="30sp"
-                android:layout_marginTop="20dp"
                 android:gravity="center" />
 
             <TextView

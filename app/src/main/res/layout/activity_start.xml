@@ -56,6 +56,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_height="400dp"
-        android:contentDescription="Team Mascot Image" />
+        android:contentDescription="Team Mascot Image"
+        android:visibility="gone" />
 
 </RelativeLayout>

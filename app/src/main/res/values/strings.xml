@@ -23,6 +23,9 @@
     <string name="decrement_symbol">-</string>
     <string name="undo_symbol">⟲</string>
     <string name="redo_symbol">⟳</string>
+    <string name="boiler_side">Boiler Side</string>
+    <string name="center_peg">Center</string>
+    <string name="gear_slot_side">Gear Slot Side</string>
 
     <string name="auton_gear_attempted">Gear Attempted</string>
     <string name="auton_gear_success">Gear Scored</string>

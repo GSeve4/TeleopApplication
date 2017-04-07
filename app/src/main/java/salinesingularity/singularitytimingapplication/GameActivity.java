@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ public class GameActivity extends AppCompatActivity {
 
     int auton_low = 0;
     int auton_high = 0;
+
+    int peg_id = 0;
 
     boolean autonGearAttempted = false;
     boolean autonGearSuccessful = false;
@@ -74,23 +78,26 @@ public class GameActivity extends AppCompatActivity {
         //starting a countdown timer when the activity opens
         countDownTimer = (TextView) findViewById(R.id.txtCountDownTimer);
         startTime = System.currentTimeMillis();
+
+
+
         new CountDownTimer(152000, 1000) {
 
             public void onTick(long millisUntilFinished)
             {
 
-                int secondsUntilFinished = ((int) millisUntilFinished / 1000) + 1;
+                int secondsUntilFinished = ((int) millisUntilFinished / 1000) - 1;
 
                 String gameMode = "Teleop";
-                if(secondsUntilFinished <= 135){
-                    if(secondsUntilFinished <= 30)
+                if(secondsUntilFinished < 135){
+                    if(secondsUntilFinished < 30)
                     {
                     gameMode = "Endgame";}
                 } else {
                     gameMode = "Autonomous";
                 }
 
-                countDownTimer.setText(gameMode + ": " + (secondsUntilFinished - 2));
+                countDownTimer.setText(gameMode + ": " + (secondsUntilFinished));
             }
 
             public void onFinish()
@@ -497,12 +504,91 @@ public class GameActivity extends AppCompatActivity {
     {
 
 
+        //Auton events (non-fuel)
+        RadioGroup radioStartPos = (RadioGroup) findViewById(R.id.radioStartPos);
+        int selectedId = radioStartPos.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        String radioTextSelected;
+        try {
+            radioTextSelected = (String) ((RadioButton) findViewById(selectedId)).getText();
+        } catch(NullPointerException e) {
+            radioTextSelected = "";
+        }
+
+
+
         if(!end_match_pressed) { //if the end match button hasn't been pressed yet
+
+
             end_match_pressed = true;
             Button btnEndGame = (Button) findViewById(R.id.btnEndGame);
             btnEndGame.setText(getString(R.string.dialogEndGame));
             endTime = System.currentTimeMillis();
+
+            switch(radioTextSelected) {
+
+                case "Boiler Side":
+                    peg_id = 0;
+                    break;
+
+
+                case "Center":
+
+                    peg_id = 1;
+                    break;
+
+
+                case "Gear Slot Side":
+
+                    peg_id = 2;
+                    break;
+
+                default:
+                    end_match_pressed = false;
+
+                    Toast.makeText(GameActivity.this,
+                            "Please select a start position!", Toast.LENGTH_SHORT).show();
+
+
+                    btnEndGame.setText(getString(R.string.default_end_game));
+                    break;
+            }
+
+
         } else { //if the end match button has been pressed once
+
+            Button btnEndGame = (Button) findViewById(R.id.btnEndGame);
+            btnEndGame.setText(getString(R.string.dialogEndGame));
+
+            switch(radioTextSelected) {
+
+                case "Boiler Side":
+                    peg_id = 0;
+                    break;
+
+
+                case "Center":
+
+                    peg_id = 1;
+                    break;
+
+
+                case "Gear Slot Side":
+
+                    peg_id = 2;
+                    break;
+
+                default:
+                    end_match_pressed = false;
+
+                    Toast.makeText(GameActivity.this,
+                            "Please select a start position!", Toast.LENGTH_SHORT).show();
+
+
+                    btnEndGame.setText(getString(R.string.default_end_game));
+                    break;
+            }
 
             ArrayList<String> eventTypesList = new ArrayList<>();
             ArrayList<String> eventValuesList = new ArrayList<>();
@@ -510,7 +596,7 @@ public class GameActivity extends AppCompatActivity {
             events.add(climbEvent);
 
             if(autonGearSuccessful) events.add(0, new TeleopEvent(TeleopEventType.AUTON_GEAR_SUCCESS, autonGearScoreTime));
-            if(autonGearAttempted) events.add(0, new TeleopEvent(TeleopEventType.AUTON_GEAR_ATTEMPTED, activityStartTime));
+            if(autonGearAttempted) events.add(0, new TeleopEvent(TeleopEventType.AUTON_GEAR_ATTEMPTED, activityStartTime + (long) (peg_id * 1000)));
 
             CheckBox baselineCheckBox = (CheckBox) findViewById(R.id.baselineCheckbox);
             if(baselineCheckBox.isChecked()) events.add(0, new TeleopEvent(TeleopEventType.BASELINE_CROSSED, activityStartTime));
