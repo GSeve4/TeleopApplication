@@ -335,12 +335,15 @@ public class GameActivity extends AppCompatActivity {
 
         if(climb == ClimbState.STARTED) {
             climb = ClimbState.NOT_ATTEMPTED;
+            climbEvent = new TeleopEvent(TeleopEventType.CLIMB_NOT_ATTEMPTED, System.currentTimeMillis());
         }
         else if(climb == ClimbState.SUCCESS){
             climb = ClimbState.STARTED;
+            climbEvent = new TeleopEvent(TeleopEventType.CLIMB_START, System.currentTimeMillis());
         }
         else if(climb == ClimbState.FAILURE){
             climb = ClimbState.STARTED;
+            climbEvent = new TeleopEvent(TeleopEventType.CLIMB_START, System.currentTimeMillis());
         }
         updateCounters();
     }
